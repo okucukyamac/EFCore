@@ -7,12 +7,18 @@ Initializer.Build();
 
 using (var _context = new AppDbContext())
 {
-    var products = await _context.Products.ToListAsync();
 
-    products.ForEach(a =>
-    {
-        Console.WriteLine(a.Name);
-    });
+    _context.Products.Add(new() { Name = "a2", Price = 23, Stock = 32, Barcode = 2398 });
+    _context.Products.Add(new() { Name = "a3", Price = 23, Stock = 32, Barcode = 2398 });
+    _context.Products.Add(new() { Name = "a4", Price = 23, Stock = 32, Barcode = 2398 });
+
+
+    var product = await _context.Products.ToListAsync();
+
+ 
+
+    _context.SaveChanges();
+
 }
 
 Console.WriteLine("Hello, World!");

@@ -17,5 +17,22 @@ namespace CodeFirst.DAL
             Initializer.Build();
             optionsBuilder.UseSqlServer(Initializer.Configuration.GetConnectionString("SqlCon"));
         }
+
+        public override int SaveChanges()
+        {
+
+            ChangeTracker.Entries().ToList().ForEach(a =>
+            {
+                if (a.Entity is Product product)
+                {
+                    if (a.State == EntityState.Added)
+                    {
+                        product.CreatedDate = DateTime.Now;
+                    }
+                }
+            });
+
+            return base.SaveChanges();
+        }
     }
 }
