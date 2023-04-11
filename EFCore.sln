@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseFirst", "DatabaseFi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseFirstByScaffold", "DatabaseFirstByScaffold\DatabaseFirstByScaffold.csproj", "{707D4DDA-210B-43E6-A233-CB24347A143C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirst", "CodeFirst\CodeFirst.csproj", "{B8F18C1E-65D5-4438-B6BE-40FFEEA64F71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{707D4DDA-210B-43E6-A233-CB24347A143C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{707D4DDA-210B-43E6-A233-CB24347A143C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{707D4DDA-210B-43E6-A233-CB24347A143C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8F18C1E-65D5-4438-B6BE-40FFEEA64F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F18C1E-65D5-4438-B6BE-40FFEEA64F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F18C1E-65D5-4438-B6BE-40FFEEA64F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F18C1E-65D5-4438-B6BE-40FFEEA64F71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
