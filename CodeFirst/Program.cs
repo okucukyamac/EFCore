@@ -15,6 +15,8 @@ using (var _context = new AppDbContext())
 
     var product = await _context.Products.ToListAsync();
 
+    var deneme =  _context.Products.Find(10);
+
  
 
     _context.SaveChanges();
