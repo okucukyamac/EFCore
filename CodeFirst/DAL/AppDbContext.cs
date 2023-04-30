@@ -11,6 +11,7 @@ namespace CodeFirst.DAL
     public class AppDbContext:DbContext
     {
         public DbSet<Product> Products{ get; set; }
+        public DbSet<Category> Categories{ get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -20,25 +21,10 @@ namespace CodeFirst.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Product>().ToTable("ProductTbb", "productstbb");
+            base.OnModelCreating(modelBuilder);
             
         }
 
-        //public override int SaveChanges()
-        //{
 
-        //    ChangeTracker.Entries().ToList().ForEach(a =>
-        //    {
-        //        if (a.Entity is Product product)
-        //        {
-        //            if (a.State == EntityState.Added)
-        //            {
-        //                product.CreatedDate = DateTime.Now;
-        //            }
-        //        }
-        //    });
-
-        //    return base.SaveChanges();
-        //}
     }
 }
