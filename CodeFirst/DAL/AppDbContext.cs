@@ -10,8 +10,8 @@ namespace CodeFirst.DAL
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,7 +29,13 @@ namespace CodeFirst.DAL
 
 
             //one-to-one foreign key and primary key are same
-            modelBuilder.Entity<Product>().HasOne(a => a.ProductFeature).WithOne(a => a.Product).HasForeignKey<ProductFeature>(a => a.Id);
+            //modelBuilder.Entity<Product>().HasOne(a => a.ProductFeature).WithOne(a => a.Product).HasForeignKey<ProductFeature>(a => a.Id);
+
+            //many to many
+            //modelBuilder.Entity<Student>().HasMany(a => a.Teachers).WithMany(a => a.Students).UsingEntity<Dictionary<string, object>>(
+            //    "StudentTeacherManyToMany", a => a.HasOne<Teacher>().WithMany().HasForeignKey("TeacherId").HasConstraintName("FK_TeacherId"),
+            //    a => a.HasOne<Student>().WithMany().HasForeignKey("StudentId").HasConstraintName("FK_StudentId")
+            //    );
         }
 
 
