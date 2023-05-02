@@ -16,5 +16,7 @@ namespace CodeFirst.DAL
         public int Stock { get; set; }
         public int Barcode { get; set; }
         public ProductFeature ProductFeature { get; set; }
+        public int CategoriId { get; set; }
+        public Category Category { get; set; }
     }
 }

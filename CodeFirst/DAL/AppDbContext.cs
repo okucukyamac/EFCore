@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace CodeFirst.DAL
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext : DbContext
     {
-        public DbSet<Product> Products{ get; set; }
-        public DbSet<Category> Categories{ get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,8 +21,15 @@ namespace CodeFirst.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-            
+            //one-to-many
+            //modelBuilder.Entity<Category>().HasMany(a => a.Products).WithOne(x => x.Category).HasForeignKey(a => a.CategoriId);
+
+            //one-to-one
+            //modelBuilder.Entity<Product>().HasOne(a => a.ProductFeature).WithOne(a => a.Product).HasForeignKey<ProductFeature>(a => a.ProductId);
+
+
+            //one-to-one foreign key and primary key are same
+            modelBuilder.Entity<Product>().HasOne(a => a.ProductFeature).WithOne(a => a.Product).HasForeignKey<ProductFeature>(a => a.Id);
         }
 
 
