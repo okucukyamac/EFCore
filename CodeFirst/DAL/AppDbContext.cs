@@ -10,9 +10,8 @@ namespace CodeFirst.DAL
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Teacher> Teachers { get; set; }
-
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             Initializer.Build();
@@ -36,6 +35,10 @@ namespace CodeFirst.DAL
             //    "StudentTeacherManyToMany", a => a.HasOne<Teacher>().WithMany().HasForeignKey("TeacherId").HasConstraintName("FK_TeacherId"),
             //    a => a.HasOne<Student>().WithMany().HasForeignKey("StudentId").HasConstraintName("FK_StudentId")
             //    );
+
+            base.OnModelCreating(modelBuilder);
+
+
         }
 
 

@@ -21,27 +21,7 @@ namespace CodeFirst.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CodeFirst.DAL.Student", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("CodeFirst.DAL.Teacher", b =>
+            modelBuilder.Entity("CodeFirst.DAL.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,37 +35,54 @@ namespace CodeFirst.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teachers");
+                    b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("StudentTeacher", b =>
+            modelBuilder.Entity("CodeFirst.DAL.Product", b =>
                 {
-                    b.Property<int>("StudentsId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("TeachersId")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Barcode")
                         .HasColumnType("int");
 
-                    b.HasKey("StudentsId", "TeachersId");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("TeachersId");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("StudentTeacher");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("StudentTeacher", b =>
+            modelBuilder.Entity("CodeFirst.DAL.Product", b =>
                 {
-                    b.HasOne("CodeFirst.DAL.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
+                    b.HasOne("CodeFirst.DAL.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CodeFirst.DAL.Teacher", null)
-                        .WithMany()
-                        .HasForeignKey("TeachersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("CodeFirst.DAL.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
