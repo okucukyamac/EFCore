@@ -7,16 +7,13 @@ Initializer.Build();
 
 using (var _context = new AppDbContext())
 {
+    var category = new Category { Name = "deneme" };
+    var product = new Product { Name = "Silgi", Price = 300, Stock = 32, Barcode = 342,Category=category };
 
-    var category = new Category() { Name = "deftasdferler" };
+    var feature = new ProductFeature { Color="deneme",Height=32,Width=32,Product=product};
 
-    var products = new List<Product>() { new Product() { Name = "dee", Price = 200, Stock = 38, Barcode = 324 } };
 
-    products.Add( new () { Name = "asdfdas", Price = 200, Stock = 38, Barcode = 324});
-
-    category.Products = products;
-
-    _context.Add(category);
+    _context.Add(feature);
 
     _context.SaveChanges();
 
