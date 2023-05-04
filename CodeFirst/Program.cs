@@ -7,13 +7,16 @@ Initializer.Build();
 
 using (var _context = new AppDbContext())
 {
-    var category = new Category { Name = "deneme" };
-    var product = new Product { Name = "Silgi", Price = 300, Stock = 32, Barcode = 342,Category=category };
+    var student = new Student() { Name = "Ahmet", Age = 23 };
 
-    var feature = new ProductFeature { Color="deneme",Height=32,Width=32,Product=product};
+    List<Teacher> teachers = new List<Teacher>();
 
+    teachers.Add(new Teacher() { Name = "Ahmet öğretmen" });
+    teachers.Add(new Teacher() { Name = "Mehmet öğretmen" });
 
-    _context.Add(feature);
+    student.Teachers = teachers;
+
+    _context.Add(student);
 
     _context.SaveChanges();
 
